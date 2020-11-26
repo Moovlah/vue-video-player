@@ -45,7 +45,7 @@ const videoPlayerDirective = globalOptions => {
   const repairDom = el => {
     if (!el.children.length) {
       const video = document.createElement('video')
-      video.className = 'video-js'
+      video.className = 'video-js vjs-theme-forest'
       el.appendChild(video)
     }
   }
