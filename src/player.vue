@@ -1,5 +1,5 @@
 <template>
-  <div :class="styleClass" v-if="reseted">
+  <div v-if="reseted">
     <video class="video-js" ref="video">
       <track v-for="crtTrack in trackList" :kind="crtTrack.kind" :label="crtTrack.label" :src="crtTrack.src" :srcLang="crtTrack.srcLang" :default="crtTrack.default"/>
     </video>
@@ -77,9 +77,9 @@
         type: Array,
         default: () => []
       },
-      styleClass: {
+      playerstyleclass: {
         type: String,
-        default: 'video-player'
+        default: ''
       },
       globalOptions: {
         type: Object,
@@ -133,6 +133,10 @@
 
         // videojs options
         const videoOptions = Object.assign({}, this.globalOptions, this.options)
+
+        if (this.playerstyleclass) {
+          this.$refs.video.classList.add(this.playerstyleclass);
+        }
 
         // ios fullscreen
         if (this.playsinline) {
