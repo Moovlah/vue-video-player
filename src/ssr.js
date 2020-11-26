@@ -64,6 +64,12 @@ const videoPlayerDirective = globalOptions => {
     const componentEvents = attrs.events || []
     const playsinline = attrs.playsinline || false
 
+    const playerstyleclass = attrs.playerstyleclass || null
+
+    if(playerstyleclass) {
+      el.children[0].classList.add(playerstyleclass)
+    }
+
     // ios fullscreen
     if (playsinline) {
       el.children[0].setAttribute('playsinline', playsinline)
@@ -108,7 +114,7 @@ const videoPlayerDirective = globalOptions => {
 
       // eventEmit
       const eventEmit = (vnode, name, data) => {
-        const handlers = (vnode.data && vnode.data.on) || 
+        const handlers = (vnode.data && vnode.data.on) ||
                          (vnode.componentOptions && vnode.componentOptions.listeners)
         if (handlers && handlers[name]) handlers[name].fns(data)
       }
@@ -122,7 +128,7 @@ const videoPlayerDirective = globalOptions => {
           eventEmit(vnode, customEventName, { [event]: value })
         }
       }
-      
+
       // instance
       player = self[instanceName] = videojs(el.children[0], videoOptions, function() {
 
@@ -176,7 +182,7 @@ const videoPlayerDirective = globalOptions => {
     bind(el, binding, vnode) {
       repairDom(el)
     },
-    
+
     // Parse text model change
     update(el, binding, vnode) {
       const options = binding.value || {}
@@ -185,7 +191,7 @@ const videoPlayerDirective = globalOptions => {
           initPlayer(el, binding, vnode)
         }
     },
-    
+
     // Destroy this directive
     unbind: disposePlayer
   }
