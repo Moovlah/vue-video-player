@@ -52,12 +52,15 @@ var videoPlayerDirective = function videoPlayerDirective(globalOptions) {
     var customEventName = attrs.customEventName || 'statechanged';
     var player = self[instanceName];
 
+    console.info('initPlayer', attrs);
+
     var componentEvents = attrs.events || [];
     var playsinline = attrs.playsinline || false;
 
     var playerstyleclass = attrs.playerstyleclass || null;
 
     if (playerstyleclass) {
+      console.info('custom styles', playerstyleclass);
       el.children[0].classList.add(playerstyleclass);
     }
 

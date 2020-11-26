@@ -60,6 +60,8 @@ const videoPlayerDirective = globalOptions => {
     const customEventName = attrs.customEventName || 'statechanged'
     let player = self[instanceName]
 
+    console.info('initPlayer', attrs)
+
     // options
     const componentEvents = attrs.events || []
     const playsinline = attrs.playsinline || false
@@ -67,6 +69,7 @@ const videoPlayerDirective = globalOptions => {
     const playerstyleclass = attrs.playerstyleclass || null
 
     if(playerstyleclass) {
+      console.info('custom styles', playerstyleclass)
       el.children[0].classList.add(playerstyleclass)
     }
 
