@@ -38,7 +38,7 @@ var videoPlayerDirective = function videoPlayerDirective(globalOptions) {
   var repairDom = function repairDom(el) {
     if (!el.children.length) {
       var video = document.createElement('video');
-      video.className = 'video-js';
+      video.className = 'video-js vjs-theme-forest';
       el.appendChild(video);
     }
   };
