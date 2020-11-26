@@ -119,6 +119,7 @@
       }
     },
     mounted() {
+      console.info('player mounted', this.playerOptions, this.playerstyleclass);
       if (!this.player) {
         this.initialize()
       }
