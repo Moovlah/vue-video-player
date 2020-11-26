@@ -55,6 +55,12 @@ var videoPlayerDirective = function videoPlayerDirective(globalOptions) {
     var componentEvents = attrs.events || [];
     var playsinline = attrs.playsinline || false;
 
+    var playerstyleclass = attrs.playerstyleclass || null;
+
+    if (playerstyleclass) {
+      el.children[0].classList.add(playerstyleclass);
+    }
+
     if (playsinline) {
       el.children[0].setAttribute('playsinline', playsinline);
       el.children[0].setAttribute('webkit-playsinline', playsinline);
